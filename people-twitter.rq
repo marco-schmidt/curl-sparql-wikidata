@@ -1,0 +1,9 @@
+# find people with a twitter account
+SELECT ?person ?personLabel ?twitter ?twitterNr WHERE {
+  ?person wdt:P31 wd:Q5.
+  ?person p:P2002 ?twitterStat.
+  ?twitterStat ps:P2002 ?twitter.
+  optional {?twitterStat pq:P6552  ?twitterNr}
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+} LIMIT 2
